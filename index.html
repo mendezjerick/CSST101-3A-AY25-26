@@ -6,23 +6,16 @@
   <title>Jerick Mendez • Cozy Autumn Portfolio</title>
   <meta name="description" content="Course portfolio site with an autumn theme for CSST101 and CSST102." />
   <style>
-    /* --- Cozy Autumn Palette (from your reference image) --- */
+    /* --- Cozy Autumn Palette --- */
     :root{
-      --cream:#f5efe8;       /* paper/cream */
-      --linen:#efe6dc;       /* soft background */
-      --tan:#dcc8b6;         /* light tan */
-      --pumpkin:#d78952;     /* warm orange */
-      --pumpkin-dark:#bf6c39;/* burnt orange */
-      --brown:#6b4f3a;       /* walnut text */
-      --brown-deep:#3e2c21;  /* deep accent */
-      --sage:#cfcbbd;        /* muted sage */
+      --cream:#f5efe8; --linen:#efe6dc; --tan:#dcc8b6;
+      --pumpkin:#d78952; --pumpkin-dark:#bf6c39;
+      --brown:#6b4f3a; --brown-deep:#3e2c21; --sage:#cfcbbd;
       --shadow:0 12px 28px rgba(62,44,33,.18);
       --ring: rgba(215,137,82,.35);
-      --radius:18px;
-      --max:1080px;
+      --radius:18px; --max:1080px;
     }
 
-    /* Base */
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     body{
@@ -33,33 +26,48 @@
         radial-gradient(1000px 500px at 120% 0%, var(--sage) 0, transparent 55%),
         linear-gradient(180deg, var(--linen), var(--cream));
       background-attachment: fixed;
+      scroll-behavior:smooth;
     }
     a{color:var(--pumpkin-dark);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:20px}
 
-    /* Hero */
+    /* Animated hero */
     header{
       position:relative; overflow:hidden;
-      padding:64px 26px 72px;
-      border-radius: calc(var(--radius) + 8px);
+      padding:64px 26px 72px; border-radius: calc(var(--radius) + 8px);
+      outline:1px solid rgba(107,79,58,.15); box-shadow:var(--shadow);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.35)),
+        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)),
         linear-gradient(180deg, #fff, #f2e8de);
-      outline:1px solid rgba(107,79,58,.15);
-      box-shadow:var(--shadow);
+      --blob1:#f6e7d9; --blob2:#e9d7c5; --blob3:#f3d4bd;
     }
-    h1{margin:0 0 6px; font-size: clamp(28px, 4.4vw, 46px)}
-    .sub{margin:8px 0 14px; color:#7a6454}
+    /* gentle moving blobs for depth */
+    .blob{
+      position:absolute; inset:auto; border-radius:50%; filter:blur(30px); opacity:.45;
+      animation: float 18s ease-in-out infinite;
+    }
+    .b1{width:360px;height:360px; background:var(--blob1); top:-120px; left:-80px;}
+    .b2{width:300px;height:300px; background:var(--blob2); top:-80px; right:-60px; animation-duration:22s}
+    .b3{width:260px;height:260px; background:var(--blob3); bottom:-120px; left:20%; animation-duration:26s}
+    @keyframes float{
+      0%,100%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(18px) translateX(8px) scale(1.03)}
+    }
+
+    h1{margin:0 0 6px; font-size: clamp(28px, 4.4vw, 46px); position:relative}
+    .sub{margin:8px 0 14px; color:#7a6454; position:relative}
     .badge{
+      position:relative;
       display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600;
       background:#fff6ef; border:1px solid rgba(215,137,82,.35); color:#8a6c58;
     }
-    .nav{display:flex; gap:16px; margin-top:14px; flex-wrap:wrap}
+    .nav{display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; position:relative}
     .nav a{font-weight:600; color:#8a6c58}
     .nav a:hover{color:var(--brown)}
 
     .cta{
+      position:relative;
       display:inline-block; margin-top:16px; padding:12px 18px; font-weight:700;
       color:#fff; border-radius:14px; border:0;
       background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark));
@@ -68,7 +76,7 @@
     }
     .cta:hover{transform:translateY(-1px)}
 
-    /* Cards / Sections */
+    /* Section cards */
     section{margin-top:28px}
     .card{
       background: linear-gradient(180deg, #fffdfb, #f2e8de);
@@ -76,45 +84,62 @@
       padding: 22px;
       outline:1px solid rgba(107,79,58,.15);
       box-shadow:var(--shadow);
+      opacity:0; transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
     }
+    .card.revealed{opacity:1; transform:none}
     h2{margin:0 0 12px; font-size: clamp(20px, 3.2vw, 28px)}
 
-    /* Grid */
+    /* Grid & tiles */
     .grid{display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
     .tile{
       background: linear-gradient(180deg, #fffaf5, #f0e2d6);
       border-radius:14px; padding:16px;
       outline:1px solid rgba(107,79,58,.14);
-      transition:transform .08s ease, outline-color .2s ease;
+      transition:transform .08s ease, outline-color .2s ease, box-shadow .2s ease;
       position:relative; overflow:hidden;
     }
-    .tile:hover{transform:translateY(-2px); outline-color:var(--ring)}
+    .tile:hover{transform:translateY(-2px); outline-color:var(--ring); box-shadow:0 10px 22px rgba(62,44,33,.12)}
     .muted{color:#8a786a}
 
-    /* Footer */
-    footer{color:#8a786a; text-align:center; padding:30px 0 46px}
-
-    /* Subtle leaf corners */
-    .corner{
-      position:absolute; inset:auto auto 0 0; width:160px; opacity:.35; pointer-events:none;
-      transform: translate(-20px,20px) rotate(-6deg);
+    /* Filter chips */
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .chip{
+      padding:6px 10px; border-radius:999px; border:1px solid rgba(107,79,58,.25);
+      background:#fff8f1; color:#8a6c58; font-weight:600; cursor:pointer;
+      transition:transform .06s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
     }
-    .corner.right{left:auto; right:0; transform: translate(20px,20px) rotate(6deg)}
+    .chip:hover{transform:translateY(-1px)}
+    .chip.active{background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark)); color:#fff; border-color:transparent}
+
+    /* Toast */
+    .toast{
+      position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+      background:#3e2c21; color:#fff; padding:10px 14px; border-radius:999px;
+      box-shadow:0 14px 30px rgba(0,0,0,.25); opacity:0; pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease; z-index:10;
+    }
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+    /* Back to top */
+    #toTop{
+      position:fixed; right:18px; bottom:18px; border:0; border-radius:50%; width:44px; height:44px;
+      background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark)); color:#fff; cursor:pointer;
+      box-shadow:0 10px 18px rgba(191,108,57,.32); display:none; place-items:center; font-size:20px;
+    }
+
+    footer{color:#8a786a; text-align:center; padding:30px 0 46px}
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- Hero -->
+    <!-- HERO -->
     <header aria-label="Cozy autumn header">
-      <img class="corner" src="data:image/svg+xml;utf8,
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
-        <path fill='%23d78952' d='M60 8c15 18 34 20 41 36 9 21-3 45-27 45-8 0-12-2-14-6-4 4-7 6-15 6C17 89 5 65 14 44 21 28 45 26 60 8z'/>
-      </svg>" alt="">
-      <img class="corner right" src="data:image/svg+xml;utf8,
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
-        <path fill='%23bf6c39' d='M60 8c15 18 34 20 41 36 9 21-3 45-27 45-8 0-12-2-14-6-4 4-7 6-15 6C17 89 5 65 14 44 21 28 45 26 60 8z'/>
-      </svg>" alt="">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
 
       <span class="badge">🍂 Cozy Autumn • CSST</span>
       <h1>Hi, I’m <strong>Jerick Mendez</strong></h1>
@@ -131,7 +156,7 @@
       <a class="cta" href="#repos">View my class work</a>
     </header>
 
-    <!-- Repositories -->
+    <!-- REPOSITORIES -->
     <section id="repos" class="card" aria-labelledby="repos-title">
       <h2 id="repos-title">Course Repositories</h2>
       <div class="grid">
@@ -146,35 +171,42 @@
       </div>
     </section>
 
-    <!-- Projects (empty folder link for now) -->
+    <!-- PROJECTS -->
     <section id="projects" class="card" aria-labelledby="projects-title">
       <h2 id="projects-title">Projects</h2>
-      <p class="muted">
-        This section will list my project pages once they’re added to
-        <code>projects/</code>. For now it’s empty by design.
-      </p>
-      <ul>
-        <li><a href="projects/">Open the <strong>projects/</strong> folder</a> (will show items as they’re added)</li>
-      </ul>
-      <!-- Example (activate later):
-      <div class="grid">
-        <a class="tile" href="projects/project-1.html"><h3>Project 1</h3><p class="muted">Short description.</p></a>
-        <a class="tile" href="projects/project-2.html"><h3>Project 2</h3><p class="muted">Short description.</p></a>
+
+      <!-- Filter chips -->
+      <div class="chips" role="tablist" aria-label="Filter projects">
+        <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-filter="CSST101" role="tab">CSST101</button>
+        <button class="chip" data-filter="CSST102" role="tab">CSST102</button>
       </div>
-      -->
+
+      <!-- Container where JS will render tiles -->
+      <div id="projectGrid" class="grid" aria-live="polite"></div>
+
+      <!-- Empty state (shown when no projects yet) -->
+      <p id="emptyMsg" class="muted" style="display:none">
+        It’s intentionally empty for now. Add files in <code>projects/</code> or update the
+        <code>projects</code> array in the script below when you’re ready.
+      </p>
+
+      <p class="muted" style="margin-top:10px">
+        Folder link: <a href="projects/">open <strong>projects/</strong></a>
+      </p>
     </section>
 
-    <!-- About -->
+    <!-- ABOUT -->
     <section id="about" class="card" aria-labelledby="about-title">
       <h2 id="about-title">About Me</h2>
       <p>
         I’m a BSCS student who enjoys building small, clean projects and learning core CS skills.
         Current focus: Python, Java, HTML/CSS/JS, Git &amp; GitHub.
       </p>
-      <p class="muted">Theme colors inspired by cozy autumn tones: cream paper, warm walnut, and pumpkin accents.</p>
+      <p class="muted">Theme: cozy autumn tones — cream paper, warm walnut, pumpkin accents.</p>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact" class="card" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
       <p class="muted">
@@ -185,5 +217,69 @@
 
     <footer>© 2025 Jerick Mendez • Cozy Autumn</footer>
   </div>
+
+  <!-- Back to top -->
+  <button id="toTop" aria-label="Back to top">↑</button>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Filter applied</div>
+
+  <script>
+    /* ===== Scroll reveal for cards ===== */
+    const reveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('revealed'); reveal.unobserve(e.target); }
+      })
+    },{threshold:0.08});
+    document.querySelectorAll('.card').forEach(c=>reveal.observe(c));
+
+    /* ===== Back to top button ===== */
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.style.display = window.scrollY > 400 ? 'grid' : 'none';
+    });
+    toTop.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+    /* ===== Projects data (add your items here) =====
+       Example object:
+       { title:'Hello Web', desc:'First HTML page', href:'projects/hello-web.html', tags:['CSST101'] }
+    */
+    const projects = [
+      // Add objects as you create files. Leave empty for now if required.
+      // { title:'Sample Project', desc:'Replace me', href:'projects/sample.html', tags:['CSST101'] },
+    ];
+
+    const grid = document.getElementById('projectGrid');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    function render(filter='all'){
+      grid.innerHTML = '';
+      const items = projects.filter(p => filter==='all' || (p.tags||[]).includes(filter));
+      if(items.length===0){
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+      for(const p of items){
+        const a = document.createElement('a');
+        a.className = 'tile'; a.href = p.href; a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = `<h3>${p.title}</h3><p class="muted">${p.desc||''}</p>`;
+        grid.appendChild(a);
+      }
+    }
+    render();
+
+    /* ===== Filter chips behavior + toast ===== */
+    const chips = document.querySelectorAll('.chip');
+    const toast = document.getElementById('toast');
+    chips.forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        chips.forEach(x=>x.classList.remove('active')); ch.classList.add('active');
+        const f = ch.dataset.filter; render(f);
+        toast.textContent = (f==='all' ? 'Showing all projects' : `Showing ${f}`);
+        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 1200);
+      });
+    });
+  </script>
 </body>
 </html>
