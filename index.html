@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jerick Mendez • Cozy Autumn Portfolio</title>
-  <meta name="description" content="Course portfolio site with an autumn theme for CSST101 and CSST102." />
+  <title>Jerick Mendez • CSST101 Autumn Portfolio</title>
+  <meta name="description" content="Course portfolio site with an autumn theme for CSST101." />
   <style>
     /* --- Cozy Autumn Palette --- */
     :root{
@@ -42,11 +42,8 @@
         linear-gradient(180deg, #fff, #f2e8de);
       --blob1:#f6e7d9; --blob2:#e9d7c5; --blob3:#f3d4bd;
     }
-    /* gentle moving blobs for depth */
-    .blob{
-      position:absolute; inset:auto; border-radius:50%; filter:blur(30px); opacity:.45;
-      animation: float 18s ease-in-out infinite;
-    }
+    .blob{position:absolute; border-radius:50%; filter:blur(30px); opacity:.45;
+      animation: float 18s ease-in-out infinite;}
     .b1{width:360px;height:360px; background:var(--blob1); top:-120px; left:-80px;}
     .b2{width:300px;height:300px; background:var(--blob2); top:-80px; right:-60px; animation-duration:22s}
     .b3{width:260px;height:260px; background:var(--blob3); bottom:-120px; left:20%; animation-duration:26s}
@@ -97,7 +94,6 @@
       border-radius:14px; padding:16px;
       outline:1px solid rgba(107,79,58,.14);
       transition:transform .08s ease, outline-color .2s ease, box-shadow .2s ease;
-      position:relative; overflow:hidden;
     }
     .tile:hover{transform:translateY(-2px); outline-color:var(--ring); box-shadow:0 10px 22px rgba(62,44,33,.12)}
     .muted{color:#8a786a}
@@ -141,91 +137,66 @@
       <div class="blob b2"></div>
       <div class="blob b3"></div>
 
-      <span class="badge">🍂 Cozy Autumn • CSST</span>
+      <span class="badge">🍂 Cozy Autumn • CSST101</span>
       <h1>Hi, I’m <strong>Jerick Mendez</strong></h1>
       <p class="sub">BS Computer Science • Section 3A • AY 2025–2026</p>
 
       <div class="nav">
-        <a href="#repos">Repositories</a>
+        <a href="#repos">Repository</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
 
-      <a class="cta" href="#repos">View my class work</a>
+      <a class="cta" href="#repos">View CSST101 work</a>
     </header>
 
-    <!-- REPOSITORIES -->
-    <section id="repos" class="card" aria-labelledby="repos-title">
-      <h2 id="repos-title">Course Repositories</h2>
+    <!-- REPOSITORY -->
+    <section id="repos" class="card">
+      <h2>Course Repository</h2>
       <div class="grid">
         <a class="tile" href="https://github.com/mendezjerick/CSST101-3A-AY25-26" target="_blank" rel="noopener">
           <h3>CSST101-3A-AY25-26</h3>
           <p class="muted">Assignments, exercises, and projects for CSST101.</p>
         </a>
-        <a class="tile" href="https://github.com/mendezjerick/CSST102-3A-AY25-26" target="_blank" rel="noopener">
-          <h3>CSST102-3A-AY25-26</h3>
-          <p class="muted">Assignments, exercises, and projects for CSST102.</p>
-        </a>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="card" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-
-      <!-- Filter chips -->
-      <div class="chips" role="tablist" aria-label="Filter projects">
-        <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="chip" data-filter="CSST101" role="tab">CSST101</button>
-        <button class="chip" data-filter="CSST102" role="tab">CSST102</button>
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="CSST101">CSST101</button>
       </div>
-
-      <!-- Container where JS will render tiles -->
-      <div id="projectGrid" class="grid" aria-live="polite"></div>
-
-      <!-- Empty state (shown when no projects yet) -->
-      <p id="emptyMsg" class="muted" style="display:none">
-        It’s intentionally empty for now. Add files in <code>projects/</code> or update the
-        <code>projects</code> array in the script below when you’re ready.
-      </p>
-
+      <div id="projectGrid" class="grid"></div>
+      <p id="emptyMsg" class="muted" style="display:none">It’s empty for now. Add files in <code>projects/</code> later.</p>
       <p class="muted" style="margin-top:10px">
         Folder link: <a href="projects/">open <strong>projects/</strong></a>
       </p>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="card" aria-labelledby="about-title">
-      <h2 id="about-title">About Me</h2>
-      <p>
-        I’m a BSCS student who enjoys building small, clean projects and learning core CS skills.
-        Current focus: Python, Java, HTML/CSS/JS, Git &amp; GitHub.
-      </p>
-      <p class="muted">Theme: cozy autumn tones — cream paper, warm walnut, pumpkin accents.</p>
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>I’m a BSCS student who enjoys building small, clean projects and learning core CS skills. Current focus: Python, Java, HTML/CSS/JS, Git &amp; GitHub.</p>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="card" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p class="muted">
-        Email: <a href="mailto:youremail@example.com">youremail@example.com</a> •
-        Profile: <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">github.com/mendezjerick</a>
-      </p>
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p class="muted">Email: <a href="mailto:youremail@example.com">youremail@example.com</a> • Profile: <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">github.com/mendezjerick</a></p>
     </section>
 
     <footer>© 2025 Jerick Mendez • Cozy Autumn</footer>
   </div>
 
-  <!-- Back to top -->
   <button id="toTop" aria-label="Back to top">↑</button>
-
-  <!-- Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite">Filter applied</div>
+  <div id="toast" class="toast">Filter applied</div>
 
   <script>
-    /* ===== Scroll reveal for cards ===== */
+    /* Reveal animation */
     const reveal = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){ e.target.classList.add('revealed'); reveal.unobserve(e.target); }
@@ -233,51 +204,38 @@
     },{threshold:0.08});
     document.querySelectorAll('.card').forEach(c=>reveal.observe(c));
 
-    /* ===== Back to top button ===== */
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      toTop.style.display = window.scrollY > 400 ? 'grid' : 'none';
-    });
-    toTop.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+    /* Back to top */
+    const toTop=document.getElementById('toTop');
+    window.addEventListener('scroll',()=>{toTop.style.display=window.scrollY>400?'grid':'none';});
+    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    /* ===== Projects data (add your items here) =====
-       Example object:
-       { title:'Hello Web', desc:'First HTML page', href:'projects/hello-web.html', tags:['CSST101'] }
-    */
-    const projects = [
-      // Add objects as you create files. Leave empty for now if required.
-      // { title:'Sample Project', desc:'Replace me', href:'projects/sample.html', tags:['CSST101'] },
-    ];
-
-    const grid = document.getElementById('projectGrid');
-    const emptyMsg = document.getElementById('emptyMsg');
-
+    /* Projects data */
+    const projects=[]; // keep empty for now
+    const grid=document.getElementById('projectGrid');
+    const emptyMsg=document.getElementById('emptyMsg');
     function render(filter='all'){
-      grid.innerHTML = '';
-      const items = projects.filter(p => filter==='all' || (p.tags||[]).includes(filter));
-      if(items.length===0){
-        emptyMsg.style.display = 'block';
-        return;
-      }
-      emptyMsg.style.display = 'none';
+      grid.innerHTML=''; 
+      const items=projects.filter(p=>filter==='all'||(p.tags||[]).includes(filter));
+      if(items.length===0){ emptyMsg.style.display='block'; return; }
+      emptyMsg.style.display='none';
       for(const p of items){
-        const a = document.createElement('a');
-        a.className = 'tile'; a.href = p.href; a.target = '_blank'; a.rel = 'noopener';
-        a.innerHTML = `<h3>${p.title}</h3><p class="muted">${p.desc||''}</p>`;
+        const a=document.createElement('a');
+        a.className='tile'; a.href=p.href; a.target='_blank'; a.rel='noopener';
+        a.innerHTML=`<h3>${p.title}</h3><p class="muted">${p.desc||''}</p>`;
         grid.appendChild(a);
       }
     }
     render();
 
-    /* ===== Filter chips behavior + toast ===== */
-    const chips = document.querySelectorAll('.chip');
-    const toast = document.getElementById('toast');
+    /* Filter chips */
+    const chips=document.querySelectorAll('.chip');
+    const toast=document.getElementById('toast');
     chips.forEach(ch=>{
-      ch.addEventListener('click', ()=>{
+      ch.addEventListener('click',()=>{
         chips.forEach(x=>x.classList.remove('active')); ch.classList.add('active');
-        const f = ch.dataset.filter; render(f);
-        toast.textContent = (f==='all' ? 'Showing all projects' : `Showing ${f}`);
-        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 1200);
+        const f=ch.dataset.filter; render(f);
+        toast.textContent=(f==='all'?'Showing all projects':`Showing ${f}`);
+        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1200);
       });
     });
   </script>
