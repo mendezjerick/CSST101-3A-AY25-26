@@ -1,159 +1,115 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jerick Mendez • CSST101 Autumn Portfolio</title>
-  <meta name="description" content="Course portfolio site with an autumn theme for CSST101." />
+  <meta name="description" content="Course portfolio site with a light autumn theme for CSST101." />
   <style>
-    /* --- Cozy Autumn Palette --- */
+    /* --- Light Autumn Palette (warm neutrals) --- */
     :root{
-      --cream:#f5efe8; --linen:#efe6dc; --tan:#dcc8b6;
-      --pumpkin:#d78952; --pumpkin-dark:#bf6c39;
-      --brown:#6b4f3a; --brown-deep:#3e2c21; --sage:#cfcbbd;
-      --shadow:0 12px 28px rgba(62,44,33,.18);
-      --ring: rgba(215,137,82,.35);
+      --paper:#fdf8f3; --mist:#f7efe6; --hay:#fae9d1;
+      --amber:#f3b26a; --amber-dark:#d88a35; --bark:#5a3d2c; --sage:#8c7a6b;
+      --ring: rgba(216,138,53,.35);
+      --shadow:0 12px 28px rgba(51,28,14,.14);
       --radius:18px; --max:1080px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
     body{
-      font:16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--brown);
+      font:16px/1.65 ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+      color:var(--bark);
       background:
-        radial-gradient(1200px 600px at 10% -10%, var(--tan) 0, transparent 55%),
-        radial-gradient(1000px 500px at 120% 0%, var(--sage) 0, transparent 55%),
-        linear-gradient(180deg, var(--linen), var(--cream));
-      background-attachment: fixed;
-      scroll-behavior:smooth;
+        radial-gradient(1200px 600px at 10% -10%, var(--hay) 0, transparent 55%),
+        radial-gradient(1000px 500px at 120% 0%, var(--mist) 0, transparent 55%),
+        linear-gradient(180deg, var(--mist), var(--paper));
+      background-attachment: fixed; scroll-behavior:smooth;
     }
-    a{color:var(--pumpkin-dark);text-decoration:none}
+    a{color:var(--amber-dark);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:20px}
 
-    /* Animated hero */
-    header{
-      position:relative; overflow:hidden;
-      padding:64px 26px 72px; border-radius: calc(var(--radius) + 8px);
-      outline:1px solid rgba(107,79,58,.15); box-shadow:var(--shadow);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35)),
-        linear-gradient(180deg, #fff, #f2e8de);
-      --blob1:#f6e7d9; --blob2:#e9d7c5; --blob3:#f3d4bd;
+    header{position:relative;overflow:hidden;padding:64px 26px 72px;
+      border-radius: calc(var(--radius) + 8px);
+      outline:1px solid rgba(90,61,44,.12);box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55)),
+        linear-gradient(180deg, #fff, var(--mist));
+      --blob1:#ffe9d2; --blob2:#fde2c3; --blob3:#ffefdc;
     }
-    .blob{position:absolute; border-radius:50%; filter:blur(30px); opacity:.45;
+    .blob{position:absolute;border-radius:50%;filter:blur(26px);opacity:.55;
       animation: float 18s ease-in-out infinite;}
-    .b1{width:360px;height:360px; background:var(--blob1); top:-120px; left:-80px;}
-    .b2{width:300px;height:300px; background:var(--blob2); top:-80px; right:-60px; animation-duration:22s}
-    .b3{width:260px;height:260px; background:var(--blob3); bottom:-120px; left:20%; animation-duration:26s}
-    @keyframes float{
-      0%,100%{transform:translateY(0) translateX(0) scale(1)}
-      50%{transform:translateY(18px) translateX(8px) scale(1.03)}
-    }
+    .b1{width:360px;height:360px;background:var(--blob1);top:-120px;left:-80px;}
+    .b2{width:300px;height:300px;background:var(--blob2);top:-80px;right:-60px;animation-duration:22s}
+    .b3{width:260px;height:260px;background:var(--blob3);bottom:-120px;left:20%;animation-duration:26s}
+    @keyframes float{0%,100%{transform:translateY(0) translateX(0) scale(1)}
+      50%{transform:translateY(18px) translateX(8px) scale(1.03)}}
 
-    h1{margin:0 0 6px; font-size: clamp(28px, 4.4vw, 46px); position:relative}
-    .sub{margin:8px 0 14px; color:#7a6454; position:relative}
-    .badge{
-      position:relative;
-      display:inline-block; padding:6px 10px; border-radius:999px; font-weight:600;
-      background:#fff6ef; border:1px solid rgba(215,137,82,.35); color:#8a6c58;
-    }
-    .nav{display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; position:relative}
-    .nav a{font-weight:600; color:#8a6c58}
-    .nav a:hover{color:var(--brown)}
+    h1{margin:0 0 6px;font-size:clamp(28px,4.4vw,46px)}
+    .sub{margin:8px 0 14px;color:var(--sage)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:600;
+      background:#fff3e6;border:1px solid rgba(216,138,53,.35);color:#6c4a34;}
+    .nav{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
+    .nav a{font-weight:600;color:#6c4a34}
+    .nav a:hover{color:var(--bark)}
 
-    .cta{
-      position:relative;
-      display:inline-block; margin-top:16px; padding:12px 18px; font-weight:700;
-      color:#fff; border-radius:14px; border:0;
-      background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark));
-      box-shadow:0 10px 18px rgba(191,108,57,.32);
-      transition:transform .06s ease;
-    }
+    .cta{display:inline-block;margin-top:16px;padding:12px 18px;font-weight:700;
+      color:#fff;border-radius:14px;background:linear-gradient(180deg,var(--amber),var(--amber-dark));
+      box-shadow:0 10px 18px rgba(216,138,53,.28);transition:transform .06s ease;}
     .cta:hover{transform:translateY(-1px)}
 
-    /* Section cards */
     section{margin-top:28px}
-    .card{
-      background: linear-gradient(180deg, #fffdfb, #f2e8de);
-      border-radius: var(--radius);
-      padding: 22px;
-      outline:1px solid rgba(107,79,58,.15);
-      box-shadow:var(--shadow);
-      opacity:0; transform: translateY(12px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .card.revealed{opacity:1; transform:none}
-    h2{margin:0 0 12px; font-size: clamp(20px, 3.2vw, 28px)}
+    .card{background:linear-gradient(180deg,#fff,var(--hay));border-radius:var(--radius);padding:22px;
+      outline:1px solid rgba(90,61,44,.12);box-shadow:var(--shadow);
+      opacity:0;transform:translateY(12px);transition:.6s}
+    .card.revealed{opacity:1;transform:none}
+    h2{margin:0 0 12px;font-size:clamp(20px,3.2vw,28px)}
+    .muted{color:var(--sage)}
 
-    /* Grid & tiles */
-    .grid{display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
-    .tile{
-      background: linear-gradient(180deg, #fffaf5, #f0e2d6);
-      border-radius:14px; padding:16px;
-      outline:1px solid rgba(107,79,58,.14);
-      transition:transform .08s ease, outline-color .2s ease, box-shadow .2s ease;
-    }
-    .tile:hover{transform:translateY(-2px); outline-color:var(--ring); box-shadow:0 10px 22px rgba(62,44,33,.12)}
-    .muted{color:#8a786a}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .tile{background:linear-gradient(180deg,#fff,#fff4e9);border-radius:14px;padding:16px;
+      outline:1px solid rgba(90,61,44,.12);transition:.2s}
+    .tile:hover{transform:translateY(-2px);outline-color:var(--ring);box-shadow:0 10px 22px rgba(51,28,14,.10)}
 
-    /* Filter chips */
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
-    .chip{
-      padding:6px 10px; border-radius:999px; border:1px solid rgba(107,79,58,.25);
-      background:#fff8f1; color:#8a6c58; font-weight:600; cursor:pointer;
-      transition:transform .06s ease, background .2s ease, border-color .2s ease;
-      user-select:none;
-    }
-    .chip:hover{transform:translateY(-1px)}
-    .chip.active{background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark)); color:#fff; border-color:transparent}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(90,61,44,.22);
+      background:#fff6ed;color:#6c4a34;font-weight:600;cursor:pointer;transition:.2s}
+    .chip.active{background:linear-gradient(180deg,var(--amber),var(--amber-dark));color:#fff}
 
-    /* Toast */
-    .toast{
-      position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
-      background:#3e2c21; color:#fff; padding:10px 14px; border-radius:999px;
-      box-shadow:0 14px 30px rgba(0,0,0,.25); opacity:0; pointer-events:none;
-      transition:opacity .25s ease, transform .25s ease; z-index:10;
-    }
-    .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+      background:var(--bark);color:#fff;padding:10px 14px;border-radius:999px;
+      box-shadow:0 14px 30px rgba(0,0,0,.25);opacity:0;transition:.25s;z-index:10}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-    /* Back to top */
-    #toTop{
-      position:fixed; right:18px; bottom:18px; border:0; border-radius:50%; width:44px; height:44px;
-      background:linear-gradient(180deg,var(--pumpkin),var(--pumpkin-dark)); color:#fff; cursor:pointer;
-      box-shadow:0 10px 18px rgba(191,108,57,.32); display:none; place-items:center; font-size:20px;
-    }
+    #toTop{position:fixed;right:18px;bottom:18px;border:0;border-radius:50%;width:44px;height:44px;
+      background:linear-gradient(180deg,var(--amber),var(--amber-dark));color:#fff;cursor:pointer;
+      box-shadow:0 10px 18px rgba(216,138,53,.28);display:none;place-items:center;font-size:20px}
+    footer{color:var(--sage);text-align:center;padding:30px 0 46px}
 
-    footer{color:#8a786a; text-align:center; padding:30px 0 46px}
+    /* no-JS fallback: show cards even if script fails */
+    .no-js .card { opacity:1; transform:none; }
   </style>
 </head>
 <body>
   <div class="wrap">
 
     <!-- HERO -->
-    <header aria-label="Cozy autumn header">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="blob b3"></div>
-
-      <span class="badge">🍂 Cozy Autumn • CSST101</span>
+    <header>
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+      <span class="badge">🍂 Light Autumn • CSST101</span>
       <h1>Hi, I’m <strong>Jerick Mendez</strong></h1>
       <p class="sub">BS Computer Science • Section 3A • AY 2025–2026</p>
-
       <div class="nav">
-        <a href="#repos">Repository</a>
+        <a href="#repo">Repository</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-
-      <a class="cta" href="#repos">View CSST101 work</a>
+      <a class="cta" href="#repo">View CSST101 work</a>
     </header>
 
     <!-- REPOSITORY -->
-    <section id="repos" class="card">
+    <section id="repo" class="card">
       <h2>Course Repository</h2>
       <div class="grid">
         <a class="tile" href="https://github.com/mendezjerick/CSST101-3A-AY25-26" target="_blank" rel="noopener">
@@ -171,36 +127,49 @@
         <button class="chip" data-filter="CSST101">CSST101</button>
       </div>
       <div id="projectGrid" class="grid"></div>
-      <p id="emptyMsg" class="muted" style="display:none">It’s empty for now. Add files in <code>projects/</code> later.</p>
+      <p id="emptyMsg" class="muted" style="display:none">It’s empty for now.</p>
       <p class="muted" style="margin-top:10px">
-        Folder link: <a href="projects/">open <strong>projects/</strong></a>
+        Folder link:
+        <a href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects" target="_blank" rel="noopener">
+          open <strong>projects/</strong>
+        </a>
       </p>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="card">
       <h2>About Me</h2>
-      <p>I’m a BSCS student who enjoys building small, clean projects and learning core CS skills. Current focus: Python, Java, HTML/CSS/JS, Git &amp; GitHub.</p>
+      <p>I’m a BSCS student who enjoys building small, clean projects and learning core CS skills.
+      Current focus: data structures, Java/Python, and front-end basics (HTML/CSS/JS).</p>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="card">
       <h2>Contact</h2>
-      <p class="muted">Email: <a href="mailto:youremail@example.com">youremail@example.com</a> • Profile: <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">github.com/mendezjerick</a></p>
+      <p class="muted">
+        Email: <a href="mailto:youremail@example.com">youremail@example.com</a> •
+        Profile: <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">github.com/mendezjerick</a>
+      </p>
     </section>
 
-    <footer>© 2025 Jerick Mendez • Cozy Autumn</footer>
+    <footer>© 2025 Jerick Mendez • Light Autumn</footer>
   </div>
 
   <button id="toTop" aria-label="Back to top">↑</button>
   <div id="toast" class="toast">Filter applied</div>
 
   <script>
+    // enable animations (remove no-js class)
+    document.documentElement.classList.remove('no-js');
+
     /* Reveal animation */
     const reveal = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('revealed'); reveal.unobserve(e.target); }
-      })
+        if(e.isIntersecting){
+          e.target.classList.add('revealed');
+          reveal.unobserve(e.target);
+        }
+      });
     },{threshold:0.08});
     document.querySelectorAll('.card').forEach(c=>reveal.observe(c));
 
@@ -210,13 +179,23 @@
     toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
     /* Projects data */
-    const projects=[]; // keep empty for now
+    const projects = [
+      {
+        title: "Activity 1 — PDF",
+        desc: "Intro activity notebook exported as PDF.",
+        tags: ["CSST101"],
+        href: "https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act1"
+      }
+      // --- Add more links here as you grow ---
+    ];
+
     const grid=document.getElementById('projectGrid');
     const emptyMsg=document.getElementById('emptyMsg');
+
     function render(filter='all'){
-      grid.innerHTML=''; 
+      grid.innerHTML='';
       const items=projects.filter(p=>filter==='all'||(p.tags||[]).includes(filter));
-      if(items.length===0){ emptyMsg.style.display='block'; return; }
+      if(items.length===0){emptyMsg.style.display='block';return;}
       emptyMsg.style.display='none';
       for(const p of items){
         const a=document.createElement('a');
@@ -227,7 +206,7 @@
     }
     render();
 
-    /* Filter chips */
+    /* Filter chips + toast */
     const chips=document.querySelectorAll('.chip');
     const toast=document.getElementById('toast');
     chips.forEach(ch=>{
