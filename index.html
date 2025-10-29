@@ -6,11 +6,11 @@
   <title>Jerick Mendez • CSST101 Autumn Portfolio</title>
   <meta name="description" content="Course portfolio site with a light autumn theme for CSST101." />
   <style>
-    /* --- Light Autumn Palette (warm neutrals) --- */
     :root{
       --paper:#fdf8f3; --mist:#f7efe6; --hay:#fae9d1;
-      --amber:#f3b26a; --amber-dark:#d88a35; --bark:#5a3d2c; --sage:#8c7a6b;
-      --ring: rgba(216,138,53,.35);
+      --amber:#f3b26a; --amber-dark:#d88a35;
+      --bark:#5a3d2c; --sage:#8c7a6b;
+      --ring:rgba(216,138,53,.35);
       --shadow:0 12px 28px rgba(51,28,14,.14);
       --radius:18px; --max:1080px;
     }
@@ -23,64 +23,149 @@
         radial-gradient(1200px 600px at 10% -10%, var(--hay) 0, transparent 55%),
         radial-gradient(1000px 500px at 120% 0%, var(--mist) 0, transparent 55%),
         linear-gradient(180deg, var(--mist), var(--paper));
-      background-attachment: fixed; scroll-behavior:smooth;
+      background-attachment:fixed;
+      scroll-behavior:smooth;
     }
     a{color:var(--amber-dark);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:0 auto;padding:20px}
 
     header{
-      position:relative;overflow:hidden;padding:64px 26px 72px;
-      border-radius: calc(var(--radius) + 8px);
-      outline:1px solid rgba(90,61,44,.12);box-shadow:var(--shadow);
-      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55)),
-        linear-gradient(180deg, #fff, var(--mist));
-      --blob1:#ffe9d2; --blob2:#fde2c3; --blob3:#ffefdc;
+      position:relative;overflow:hidden;padding:32px 26px 32px;
+      border-radius:calc(var(--radius) + 8px);
+      outline:1px solid rgba(90,61,44,.12);
+      box-shadow:var(--shadow);
+      background:
+        radial-gradient(400px 300px at 85% 40%, rgba(255,226,179,.4) 0%, rgba(255,226,179,0) 70%),
+        radial-gradient(500px 400px at 15% 80%, rgba(255,210,150,.25) 0%, rgba(255,210,150,0) 70%),
+        linear-gradient(180deg,#fff,rgba(255,255,255,.6));
     }
-    .blob{position:absolute;border-radius:50%;filter:blur(26px);opacity:.55;
-      animation: float 18s ease-in-out infinite;}
-    .b1{width:360px;height:360px;background:var(--blob1);top:-120px;left:-80px;}
-    .b2{width:300px;height:300px;background:var(--blob2);top:-80px;right:-60px;animation-duration:22s}
-    .b3{width:260px;height:260px;background:var(--blob3);bottom:-120px;left:20%;animation-duration:26s}
-    @keyframes float{0%,100%{transform:translateY(0) translateX(0) scale(1)}
-      50%{transform:translateY(18px) translateX(8px) scale(1.03)}}
 
-    h1{margin:0 0 6px;font-size:clamp(28px,4.4vw,46px)}
-    .sub{margin:8px 0 14px;color:var(--sage)}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:600;
-      background:#fff3e6;border:1px solid rgba(216,138,53,.35);color:#6c4a34;}
-    .nav{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
-    .nav a{font-weight:600;color:#6c4a34}
-    .nav a:hover{color:var(--bark)}
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:600;
+      background:#fff3e6;
+      border:1px solid rgba(216,138,53,.35);
+      color:#6c4a34;
+      font-size:.9rem;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(28px,4.4vw,42px);
+      font-weight:700;
+      color:var(--bark);
+    }
+    .sub{
+      margin:0 0 20px;
+      color:var(--sage);
+      font-size:.95rem;
+      line-height:1.4;
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      font-size:.95rem;
+      font-weight:600;
+      color:#6c4a34;
+      margin:0 0 24px;
+      padding:0;
+      list-style:none;
+    }
+    .nav a{color:#6c4a34;text-decoration:none}
+    .nav a:hover{color:var(--bark);text-decoration:none}
 
     .cta{
-      display:inline-block;margin-top:16px;padding:12px 18px;font-weight:700;
-      color:#fff;border-radius:14px;
+      display:inline-block;
+      padding:12px 18px;
+      font-weight:700;
+      color:#fff;
+      border-radius:14px;
       background:linear-gradient(180deg,var(--amber),var(--amber-dark));
       box-shadow:0 10px 18px rgba(216,138,53,.28);
       transition:transform .06s ease;
+      font-size:.95rem;
     }
     .cta:hover{transform:translateY(-1px)}
 
     section{margin-top:28px}
     .card{
       background:linear-gradient(180deg,#fff,var(--hay));
-      border-radius:var(--radius);padding:22px;
-      outline:1px solid rgba(90,61,44,.12);box-shadow:var(--shadow);
-      opacity:0;transform:translateY(12px);transition:.6s;
+      border-radius:var(--radius);
+      padding:22px;
+      outline:1px solid rgba(90,61,44,.12);
+      box-shadow:var(--shadow);
+      opacity:1;           /* visible immediately */
+      transform:none;      /* no JS reveal required to see it */
+      transition:.6s;
     }
-    .card.revealed{opacity:1;transform:none}
-    h2{margin:0 0 12px;font-size:clamp(20px,3.2vw,28px)}
-    .muted{color:var(--sage)}
+    h2{
+      margin:0 0 12px;
+      font-size:clamp(20px,3.2vw,28px);
+      font-weight:600;
+      color:var(--bark);
+    }
+    .muted{color:var(--sage);font-size:.95rem;line-height:1.4}
 
-    /* --- FOLDER GRID (soft autumn version) --- */
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .tile{
+      background:linear-gradient(180deg,#fff,#fff4e9);
+      border-radius:14px;
+      padding:16px;
+      outline:1px solid rgba(90,61,44,.12);
+      transition:.2s;
+      box-shadow:0 10px 22px rgba(51,28,14,.06);
+    }
+    .tile:hover{
+      transform:translateY(-2px);
+      outline-color:var(--ring);
+      box-shadow:0 10px 22px rgba(51,28,14,.10);
+    }
+    .tile h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--bark);
+    }
+
+    /* Folder cards */
+    .chips{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(90,61,44,.22);
+      background:#fff6ed;
+      color:#6c4a34;
+      font-weight:600;
+      cursor:pointer;
+      font-size:.85rem;
+      line-height:1.2;
+      transition:.2s;
+    }
+    .chip.active{
+      background:linear-gradient(180deg,var(--amber),var(--amber-dark));
+      color:#fff;
+    }
+
     .folder-grid{
       display:grid;
       gap:20px;
       grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
       margin-top:20px;
     }
-
     .folder-card{
       position:relative;
       background:
@@ -99,19 +184,18 @@
       text-align:center;
       transition:.18s;
     }
-
     .folder-card:hover{
       transform:translateY(-2px) scale(1.01);
       box-shadow:0 28px 48px rgba(90,61,44,.2);
       outline-color:var(--ring);
     }
-
     .folder-icon-wrap{
       position:absolute;
       top:28px;
       left:50%;
       transform:translateX(-50%);
-      width:96px;height:96px;
+      width:96px;
+      height:96px;
       border-radius:16px;
       background:
         radial-gradient(circle at 50% 30%, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 70%),
@@ -122,55 +206,70 @@
       border:1px solid rgba(255,255,255,.4);
       display:grid;
       place-items:center;
-      font-size:40px;font-weight:600;line-height:1;color:#5a3d2c;
+      font-size:40px;
+      font-weight:600;
+      line-height:1;
+      color:#5a3d2c;
     }
-
     .accent-leaf{
       background:linear-gradient(180deg,#f5ffe8 0%, #d9f7b7 40%, #b8e27a 60%, #8abf4a 100%) !important;
       box-shadow:0 24px 40px rgba(170,210,90,.35),0 0 40px rgba(170,210,90,.4);
       color:#2f3a15;
+      border:1px solid rgba(255,255,255,.4);
     }
     .accent-rust{
       background:linear-gradient(180deg,#fff1eb 0%, #ffc9b0 40%, #ff9a6b 60%, #d36a33 100%) !important;
       box-shadow:0 24px 40px rgba(227,120,60,.35),0 0 40px rgba(227,120,60,.4);
       color:#4a1f11;
+      border:1px solid rgba(255,255,255,.4);
     }
     .accent-amber{
       background:linear-gradient(180deg,#fffbe5 0%, #fff2a8 40%, #ffd465 60%, #ffb92e 100%) !important;
       box-shadow:0 24px 40px rgba(255,200,60,.35),0 0 40px rgba(255,200,60,.4);
       color:#4a3514;
+      border:1px solid rgba(255,255,255,.4);
     }
-
     .folder-title{
-      font-size:1.25rem;font-weight:700;margin-top:120px;margin-bottom:8px;color:var(--bark);
+      font-size:1.25rem;
+      font-weight:700;
+      margin-top:120px;
+      margin-bottom:8px;
+      color:var(--bark);
     }
     .folder-desc{
-      font-size:.95rem;line-height:1.4;color:var(--sage);margin:0;
+      font-size:.95rem;
+      line-height:1.4;
+      color:var(--sage);
+      margin:0;
     }
 
-    footer{color:var(--sage);text-align:center;padding:30px 0 46px}
+    footer{
+      color:var(--sage);
+      text-align:center;
+      padding:30px 0 46px;
+      font-size:.9rem;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- HERO -->
     <header>
-      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
       <span class="badge">🍂 Light Autumn • CSST101</span>
       <h1>Hi, I’m <strong>Jerick Mendez</strong></h1>
       <p class="sub">BS Computer Science • Section 3A • AY 2025–2026</p>
-      <div class="nav">
-        <a href="#repo">Repository</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/mendezjerick" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
+
+      <ul class="nav">
+        <li><a href="#repo">Repository</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://github.com/mendezjerick" target="_blank" rel="noopener">GitHub ↗</a></li>
+      </ul>
+
       <a class="cta" href="#repo">View CSST101 work</a>
     </header>
 
-    <!-- REPOSITORY -->
     <section id="repo" class="card">
       <h2>Course Repository</h2>
       <div class="grid">
@@ -181,9 +280,9 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects" class="card">
       <h2>Projects</h2>
+
       <div class="chips">
         <button class="chip active" data-filter="all">All</button>
         <button class="chip" data-filter="CSST101">CSST101</button>
@@ -223,14 +322,14 @@
       </p>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="card">
       <h2>About Me</h2>
-      <p>I’m a BSCS student who enjoys building small, clean projects and learning core CS skills.
-      Current focus: data structures, Java/Python, and front-end basics (HTML/CSS/JS).</p>
+      <p class="muted">
+        I’m a BSCS student who enjoys building small, clean projects and learning core CS skills.
+        Current focus: data structures, Java/Python, and front-end basics (HTML/CSS/JS).
+      </p>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="card">
       <h2>Contact</h2>
       <p class="muted">
