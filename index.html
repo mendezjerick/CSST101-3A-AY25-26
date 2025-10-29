@@ -58,22 +58,159 @@
     .cta:hover{transform:translateY(-1px)}
 
     section{margin-top:28px}
-    .card{background:linear-gradient(180deg,#fff,var(--hay));border-radius:var(--radius);padding:22px;
-      outline:1px solid rgba(90,61,44,.12);box-shadow:var(--shadow);
-      opacity:0;transform:translateY(12px);transition:.6s}
+    .card{
+      background:linear-gradient(180deg,#fff,var(--hay));
+      border-radius:var(--radius);
+      padding:22px;
+      outline:1px solid rgba(90,61,44,.12);
+      box-shadow:var(--shadow);
+      opacity:0;
+      transform:translateY(12px);
+      transition:.6s
+    }
     .card.revealed{opacity:1;transform:none}
     h2{margin:0 0 12px;font-size:clamp(20px,3.2vw,28px)}
     .muted{color:var(--sage)}
 
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .tile{background:linear-gradient(180deg,#fff,#fff4e9);border-radius:14px;padding:16px;
-      outline:1px solid rgba(90,61,44,.12);transition:.2s}
-    .tile:hover{transform:translateY(-2px);outline-color:var(--ring);box-shadow:0 10px 22px rgba(51,28,14,.10)}
+    /* generic grid (repo, etc.) */
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr))
+    }
 
+    .tile{
+      background:linear-gradient(180deg,#fff,#fff4e9);
+      border-radius:14px;
+      padding:16px;
+      outline:1px solid rgba(90,61,44,.12);
+      transition:.2s
+    }
+    .tile:hover{
+      transform:translateY(-2px);
+      outline-color:var(--ring);
+      box-shadow:0 10px 22px rgba(51,28,14,.10)
+    }
+
+    /* chips / filters */
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(90,61,44,.22);
-      background:#fff6ed;color:#6c4a34;font-weight:600;cursor:pointer;transition:.2s}
-    .chip.active{background:linear-gradient(180deg,var(--amber),var(--amber-dark));color:#fff}
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(90,61,44,.22);
+      background:#fff6ed;
+      color:#6c4a34;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s
+    }
+    .chip.active{
+      background:linear-gradient(180deg,var(--amber),var(--amber-dark));
+      color:#fff
+    }
+
+    /* FOLDER CARDS (autumn variant) */
+    .folder-grid{
+      display:grid;
+      gap:20px;
+      grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));
+      margin-top:20px;
+    }
+
+    .folder-card{
+      position:relative;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 70%),
+        linear-gradient(180deg,#2a211a 0%, #3a2d22 60%, #1d1611 100%);
+      border-radius:18px;
+      padding:28px 20px 24px;
+      min-height:220px;
+      color:#fff;
+      box-shadow:0 24px 40px rgba(51,28,14,.4);
+      border:1px solid rgba(255,255,255,.07);
+      outline:1px solid rgba(90,61,44,.4);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      text-align:center;
+      transition:.18s;
+    }
+
+    .folder-card:hover{
+      transform:translateY(-2px) scale(1.01);
+      box-shadow:0 28px 48px rgba(51,28,14,.5);
+      outline-color:var(--ring);
+    }
+
+    /* glowing icon square on top */
+    .folder-icon-wrap{
+      position:absolute;
+      top:28px;
+      left:50%;
+      transform:translateX(-50%);
+      width:96px;
+      height:96px;
+      border-radius:16px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 70%),
+        linear-gradient(180deg,#fff8ef 0%, #ffe4b8 40%, #ffc870 60%, #f3b26a 100%);
+      box-shadow:
+        0 24px 40px rgba(243,178,106,.35),
+        0 0 40px rgba(243,178,106,.4);
+      border:1px solid rgba(255,255,255,.4);
+      display:grid;
+      place-items:center;
+      font-size:40px;
+      font-weight:600;
+      line-height:1;
+      color:#5a3d2c;
+    }
+
+    /* Accent color variants for variety if you want */
+    .accent-leaf {
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 70%),
+        linear-gradient(180deg,#f5ffe8 0%, #d9f7b7 40%, #b8e27a 60%, #8abf4a 100%) !important;
+      box-shadow:
+        0 24px 40px rgba(170,210,90,.35),
+        0 0 40px rgba(170,210,90,.4);
+      color:#2f3a15;
+    }
+
+    .accent-rust {
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 70%),
+        linear-gradient(180deg,#fff1eb 0%, #ffc9b0 40%, #ff9a6b 60%, #d36a33 100%) !important;
+      box-shadow:
+        0 24px 40px rgba(227,120,60,.35),
+        0 0 40px rgba(227,120,60,.4);
+      color:#4a1f11;
+    }
+
+    .accent-amber {
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 70%),
+        linear-gradient(180deg,#fffbe5 0%, #fff2a8 40%, #ffd465 60%, #ffb92e 100%) !important;
+      box-shadow:
+        0 24px 40px rgba(255,200,60,.35),
+        0 0 40px rgba(255,200,60,.4);
+      color:#4a3514;
+    }
+
+    .folder-title{
+      font-size:1.25rem;
+      font-weight:700;
+      margin-top:120px;
+      margin-bottom:8px;
+      color:#fff;
+    }
+
+    .folder-desc{
+      font-size:.95rem;
+      line-height:1.4;
+      color:rgba(255,255,255,.8);
+      margin:0;
+    }
 
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
       background:var(--bark);color:#fff;padding:10px 14px;border-radius:999px;
@@ -122,13 +259,57 @@
     <!-- PROJECTS -->
     <section id="projects" class="card">
       <h2>Projects</h2>
+
+      <!-- Filter chips (still visual / future use) -->
       <div class="chips">
         <button class="chip active" data-filter="all">All</button>
         <button class="chip" data-filter="CSST101">CSST101</button>
       </div>
-      <div id="projectGrid" class="grid"></div>
-      <p id="emptyMsg" class="muted" style="display:none">It’s empty for now.</p>
-      <p class="muted" style="margin-top:10px">
+
+      <!-- Folder-style cards -->
+      <div class="folder-grid" id="folderGrid">
+        <!-- ACTIVITY 1 -->
+        <a class="folder-card" href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act1"
+           target="_blank" rel="noopener">
+          <div class="folder-icon-wrap">
+            🧠
+          </div>
+          <div class="folder-title">Activity 1</div>
+          <p class="folder-desc">Python code, logic CSV, and report explanation</p>
+        </a>
+
+        <!-- ACTIVITY 2 -->
+        <a class="folder-card" href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act2"
+           target="_blank" rel="noopener">
+          <div class="folder-icon-wrap accent-leaf">
+            💻
+          </div>
+          <div class="folder-title">Activity 2</div>
+          <p class="folder-desc">Exercises and source files for Activity&nbsp;2</p>
+        </a>
+
+        <!-- ACTIVITY 3 -->
+        <a class="folder-card" href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act3"
+           target="_blank" rel="noopener">
+          <div class="folder-icon-wrap accent-rust">
+            📁
+          </div>
+          <div class="folder-title">Activity 3</div>
+          <p class="folder-desc">Project files and related code</p>
+        </a>
+
+        <!-- ACTIVITY 4 -->
+        <a class="folder-card" href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act4"
+           target="_blank" rel="noopener">
+          <div class="folder-icon-wrap accent-amber">
+            📂
+          </div>
+          <div class="folder-title">Activity 4</div>
+          <p class="folder-desc">Final activity / extended task materials</p>
+        </a>
+      </div>
+
+      <p class="muted" style="margin-top:16px">
         Folder link:
         <a href="https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects" target="_blank" rel="noopener">
           open <strong>projects/</strong>
@@ -175,47 +356,22 @@
 
     /* Back to top */
     const toTop=document.getElementById('toTop');
-    window.addEventListener('scroll',()=>{toTop.style.display=window.scrollY>400?'grid':'none';});
+    window.addEventListener('scroll',()=>{
+      toTop.style.display=window.scrollY>400?'grid':'none';
+    });
     toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    /* Projects data */
-    const projects = [
-      {
-        title: "Activity 1",
-        desc: "Python code, logic csv, and the report explanation",
-        tags: ["CSST101"],
-        href: "https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act1"
-        href: "https://github.com/mendezjerick/CSST101-3A-AY25-26/tree/main/projects/Act2"
-      }
-      // --- Add more links here as you grow ---
-    ];
-
-    const grid=document.getElementById('projectGrid');
-    const emptyMsg=document.getElementById('emptyMsg');
-
-    function render(filter='all'){
-      grid.innerHTML='';
-      const items=projects.filter(p=>filter==='all'||(p.tags||[]).includes(filter));
-      if(items.length===0){emptyMsg.style.display='block';return;}
-      emptyMsg.style.display='none';
-      for(const p of items){
-        const a=document.createElement('a');
-        a.className='tile'; a.href=p.href; a.target='_blank'; a.rel='noopener';
-        a.innerHTML=`<h3>${p.title}</h3><p class="muted">${p.desc||''}</p>`;
-        grid.appendChild(a);
-      }
-    }
-    render();
-
-    /* Filter chips + toast */
+    /* Filter chips + toast (visual only) */
     const chips=document.querySelectorAll('.chip');
     const toast=document.getElementById('toast');
     chips.forEach(ch=>{
       ch.addEventListener('click',()=>{
-        chips.forEach(x=>x.classList.remove('active')); ch.classList.add('active');
-        const f=ch.dataset.filter; render(f);
+        chips.forEach(x=>x.classList.remove('active'));
+        ch.classList.add('active');
+        const f=ch.dataset.filter;
         toast.textContent=(f==='all'?'Showing all projects':`Showing ${f}`);
-        toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1200);
+        toast.classList.add('show');
+        setTimeout(()=>toast.classList.remove('show'),1200);
       });
     });
   </script>
